@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lhy Blog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="imagetoolbar" content="false" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, user-scalable=no">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => false %>
+  <%= yield :head %>
+  <%= csrf_meta_tags %> 
+</head>
+<body>
+  <%= render partial: 'layouts/shares/top' %>
+  <%= yield %>
+  <%= render partial: 'layouts/shares/footer' %>
+</body>
+</html>
