@@ -1,0 +1,5 @@
+<%= form_for @article do |f| %>
+	标题：<%= f.text_field :title %><br />
+	正文：<%= f.text_area :body %><br />
+	<%= f.submit('提交') %>
+<% end %>

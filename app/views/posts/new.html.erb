@@ -1,0 +1,6 @@
+
+<%= form_for @post do |f| %>
+	标题：<%= f.text_field :title %><br />
+	介绍：<%= f.text_area :body %><br />
+	<%= f.submit('提交') %>
+<% end %>

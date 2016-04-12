@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160412105738) do
     t.string   "title",      limit: 255
     t.string   "body",       limit: 3000
     t.integer  "user_id",    limit: 4
+    t.integer  "post_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end

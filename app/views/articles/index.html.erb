@@ -1,0 +1,20 @@
+<%= paginate @articles if @articles %>
+<p><%= link_to '新建', new_article_path %></p>
+<div>
+	<ul>
+		<% @articles && @articles.each do |article| %>
+		<li>
+			<h1><%=link_to article.title, article_path(article) %></h1>
+			<p><%= article.body.truncate(100) %></p>
+			<div>
+				<p><h3>最新评论:</h3></p>
+				<% article.comments.includes(:user).order('id DESC').limit(3).each do |comment| %>
+					<p><i>--<%= comment.user.name %>--</i></p>
+					<p><%= comment.body %></p>
+				<% end %>
+			</div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<%= paginate @articles if @articles %>

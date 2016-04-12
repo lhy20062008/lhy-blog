@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.string :body, limit: 3000
       t.integer :user_id
+      t.integer :post_id
 
       t.timestamps
     end

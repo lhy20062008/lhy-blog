@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :articles
 
   match '/login', to: 'users#login', via: [:get, :post]
-  match '/register', to: 'users#register', via: :get
-  root 'users#login'
+  match '/logout', to: 'users#logout', via: :get
+  root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

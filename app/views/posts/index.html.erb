@@ -1,0 +1,19 @@
+<%= paginate @posts if @posts %>
+<div>
+	<ul>
+		<% @posts && @posts.each do |post| %>
+		<li>
+			<h1><%= link_to post.title, post_path(post) %></h1>
+			<p><%= post.body.truncate(100) %></p>
+			<div>
+				<p><h3>最新评论:</h3></p>
+				<% post.comments.includes(:user).order('id DESC').limit(3).each do |comment| %>
+					<p><i>--<%= comment.user.name %>--</i></p>
+					<p><%= comment.body %></p>
+				<% end %>
+			</div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<%= paginate @posts if @posts %>
