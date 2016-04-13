@@ -4,6 +4,7 @@
 		<% @posts && @posts.each do |post| %>
 		<li>
 			<h1><%= link_to post.title, post_path(post) %></h1>
+			<p><%= post.tags.map(&:name).join(' ') %></p>
 			<p><%= post.body.truncate(100) %></p>
 			<div>
 				<p><h3>最新评论:</h3></p>

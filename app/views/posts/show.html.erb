@@ -1,4 +1,6 @@
 <h2><%= @post.title %></h2>
+<p><%= @post.tags.map(&:name).join(' ') %></p>
+<p><%= link_to '编辑', edit_post_path(@post) %></p>
 <p><%= @post.body %></p>
 <p>评论(<span class='comment_count'><%= @post.comments.count %></span>)</p>
 <%= form_for Comment.new, remote: true do |f| %>

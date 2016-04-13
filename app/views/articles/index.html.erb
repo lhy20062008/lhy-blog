@@ -5,7 +5,11 @@
 		<% @articles && @articles.each do |article| %>
 		<li>
 			<h1><%=link_to article.title, article_path(article) %></h1>
+			<p><%= link_to '编辑', edit_article_path(article) %></p>
 			<p><%= article.body.truncate(100) %></p>
+			<p>
+				<%= article.tags.map(&:name).join(' ') %>
+			</p>
 			<div>
 				<p><h3>最新评论:</h3></p>
 				<% article.comments.includes(:user).order('id DESC').limit(3).each do |comment| %>

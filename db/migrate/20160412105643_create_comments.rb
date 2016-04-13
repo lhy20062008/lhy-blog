@@ -4,7 +4,9 @@ class CreateComments < ActiveRecord::Migration
       t.integer :commentable_id
       t.string  :commentable_type
       t.integer :user_id
-      t.string  :body, limit: 3000
+      t.text  :body
     end
+
+    add_index :comments, [:commentable_id, :commentable_type]
   end
 end

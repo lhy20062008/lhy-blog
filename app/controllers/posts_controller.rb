@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
 		if @post.save
+			@post.do_tags(params[:tag_ids])
 			redirect_to posts_path
 		else
 			render :new
@@ -15,6 +16,20 @@ class PostsController < ApplicationController
 
 	def new
 		@post = Post.new
+	end
+
+	def edit
+		@post = Post.find_by_id params[:id]
+	end
+
+	def update
+		@post = Post.find_by_id params[:id]
+		if @post.update_attributes(post_params)
+			@post.do_tags(params[:tag_ids])
+			redirect_to posts_path
+		else
+			render :edit
+		end
 	end
 
 	def show

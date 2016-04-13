@@ -1,0 +1,12 @@
+
+<%= form_for @post do |f| %>
+  标题：<%= f.text_field :title %><br />
+  介绍：<%= f.text_area :body %><br />
+
+  <% Tag.all.each do |tag| %>
+    <label for="tag_<%= tag.id %>"><%= tag.name %></label>
+    <input type='checkbox' name='tag_ids[]' value="<%= tag.id %>" <%= @post.tags.include?(tag) ? 'checked': '' %>/>
+  <% end %>
+  <br />
+  <%= f.submit('提交') %>
+<% end %>

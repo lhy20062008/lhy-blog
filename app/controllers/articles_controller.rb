@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 	before_filter :ensure_sigin_in!
 	def index
-		@articles = Article.where(user_id: current_user.id).page(params[:page]).per(20).order('id desc')
+		@articles = Article.includes(:tags).where(user_id: current_user.id).page(params[:page]).per(20).order('id desc')
 	end
 
 	def new
@@ -11,9 +11,24 @@ class ArticlesController < ApplicationController
 	def create
 		@article = Article.new(article_params)
 		if @article.save
+			@article.do_tags(params[:tag_ids])
 			redirect_to articles_path
 		else
 			render :new
+		end
+	end
+	
+	def edit
+		@article = Article.find_by_id params[:id]
+	end
+
+	def update
+		@article = Article.find_by_id params[:id]
+		if @article.update_attributes(article_params)
+			@article.do_tags(params[:tag_ids])
+			redirect_to articles_path
+		else
+			render :eidt
 		end
 	end
 

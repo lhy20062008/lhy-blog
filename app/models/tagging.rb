@@ -1,3 +1,4 @@
 class Tagging < ActiveRecord::Base
-  validate_uniqueness :name
+  belongs_to :tagable, :polymorphic => true
+  belongs_to :tag
 end

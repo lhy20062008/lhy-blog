@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160412105738) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
-    t.string   "body",       limit: 3000
+    t.text     "body",       limit: 65535
     t.integer  "user_id",    limit: 4
     t.integer  "post_id",    limit: 4
     t.datetime "created_at"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20160412105738) do
     t.integer "commentable_id",   limit: 4
     t.string  "commentable_type", limit: 255
     t.integer "user_id",          limit: 4
-    t.string  "body",             limit: 3000
+    t.text    "body",             limit: 65535
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      limit: 255
-    t.string   "body",       limit: 3000
+    t.text     "body",       limit: 65535
     t.string   "user_id",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
